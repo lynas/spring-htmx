@@ -2,7 +2,7 @@
 <html
         lang="en"
         xmlns:th="http://www.thymeleaf.org"
-        >
+>
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -13,31 +13,39 @@
 </head>
 <body>
 <div class="container">
-    Hello Htmx
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form class="form">
+                <label for="name">Name</label>
+                <input
+                        id="name"
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        placeholder="e.g John Doe"
+                >
+                <label for="age">Age</label>
+                <input
+                        id="age"
+                        class="form-control"
+                        type="number"
+                        name="age"
+                        placeholder="20"
+                >
+                <label for="location">Location</label>
+                <input
+                        id="location"
+                        class="form-control"
+                        type="text"
+                        name="location"
+                        placeholder="e.g. Munich"
+                >
+                <button class="btn btn-primary" type="submit">Submit</button>
 
-
-
-
-    <!-- have a button POST a click via AJAX -->
-    <button hx-post="/clicked" hx-swap="outerHTML">
-        Click Me
-    </button>
-
-    <button hx-get="/users" hx-swap="outerHTML">
-        Click Me
-    </button>
-    <div>
-        <form hx-post="/store">
-            <input id="title" name="title" type="text"
-                   hx-post="/validate"
-                   hx-trigger="change"
-                   hx-sync="closest form:abort"
-                   hx-target="#title-error"
-            >
-            <span id="title-error"></span>
-            <span></span>
-            <button type="submit">Submit</button>
-        </form>
+            </form>
+        </div>
+        <div class="col-lg-4"></div>
     </div>
 </div>
 </body>
