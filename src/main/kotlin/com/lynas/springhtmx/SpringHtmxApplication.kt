@@ -79,8 +79,10 @@ data class User(
 )
 
 var userList = mutableListOf(
-    User(name = "Name1"),
-    User(name = "Name2")
+    User(name = "John Doe"),
+    User(name = "Max Payne"),
+    User(name = "Uzumaki Naruto"),
+    User(name = "John Constantine"),
 )
 
 @RestController
@@ -112,12 +114,4 @@ class UserController {
         response.setHeader("HX-Trigger", "updateUserList");
         return user.toString()
     }
-
-//    @GetMapping("/byId/{userId}")
-//    @HxRequest
-//    @HxTrigger("openSidebar")
-//    fun getUserById(@PathVariable userId: String): User {
-//        println("get user by id $userId")
-//        return userList.find { it.id == userId }!!
-//    }
 }
