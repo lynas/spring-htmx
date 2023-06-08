@@ -3,6 +3,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Location</th>
@@ -10,9 +11,10 @@
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
                 <td th:text="${user.name}"></td>
-                <!--                    <td th:text="${user.age}"></td>-->
-                <!--                    <td th:text="${user.location}"></td>-->
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.location}"></td>
             </tr>
             </tbody>
         </table>

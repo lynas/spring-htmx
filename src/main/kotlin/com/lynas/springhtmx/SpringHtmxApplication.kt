@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 
 
 @SpringBootApplication
@@ -61,12 +62,15 @@ class ApiController {
 }
 
 data class User(
-    val name: String
+    val id: String = UUID.randomUUID().toString(),
+    val name: String,
+    val age: Int = 0,
+    val location: String = ""
 )
 
 var userList = mutableListOf(
-    User("Name1"),
-    User("Name2")
+    User(name = "Name1"),
+    User(name = "Name2")
 )
 
 @RestController
