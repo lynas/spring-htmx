@@ -4,6 +4,7 @@ import io.github.wimdeblauwe.hsbt.mvc.HtmxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxRefresh
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxTrigger
+import jakarta.servlet.http.HttpServletResponse
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.stereotype.Controller
@@ -86,9 +87,15 @@ class UserController {
 
     @PostMapping
     @HxRequest
-    fun createNewUser(@ModelAttribute user: User): String {
+    @HxTrigger("updateUserList")
+    fun createNewUser(
+        @ModelAttribute user: User,
+        request: HtmxRequest,
+        response: HttpServletResponse
+    ): String {
         userList.add(user)
         println(userList.size)
+        response.setHeader("HX-Trigger", "updateUserList");
         return user.toString()
     }
 }
