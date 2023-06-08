@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:htmx="http://www.thymeleaf.org/extras/htmx">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+Hello Htmx
+
+<script th:src="@{/webjars/htmx.org/1.9.2/dist/htmx.js}"></script>
+
+
+<!-- have a button POST a click via AJAX -->
+<button hx-post="/clicked" hx-swap="outerHTML">
+    Click Me
+</button>
+
+<button hx-get="/users" hx-swap="outerHTML">
+    Click Me
+</button>
+<div>
+    <form hx-post="/store">
+        <input id="title" name="title" type="text"
+               hx-post="/validate"
+               hx-trigger="change"
+               hx-sync="closest form:abort"
+               hx-target="#title-error"
+        >
+        <span id="title-error"></span>
+        <span></span>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
