@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:hx="https://github.com/wimdeblauwe/htmx-spring-boot-thymeleaf"
+      th:with="headline='Welcome to Schematic - a database management UI for Spring Boot!'">
+<head>
+</head>
+<body>
 <div class="row">
     <div class="col-lg-12">
+        <div hx:get="@{/users/{id}(id=$users}" hx-target="#otherElement">Load user details</div>
+
         <table class="table">
             <thead>
             <tr>
@@ -11,7 +21,11 @@
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.id}"></td>
+                <td th:text="${user.id}"
+                    hx-trigger="click"
+                    hx:get="@{/users/byId/}+${user.id}"
+                    hx-swap="none"
+                ></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.location}"></td>
@@ -20,3 +34,4 @@
         </table>
     </div>
 </div>
+</body>

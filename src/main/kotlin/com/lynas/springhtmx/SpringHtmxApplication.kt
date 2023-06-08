@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestAttribute
 import org.springframework.web.bind.annotation.RequestBody
@@ -101,5 +102,13 @@ class UserController {
         println(userList.size)
         response.setHeader("HX-Trigger", "updateUserList");
         return user.toString()
+    }
+
+    @GetMapping("/byId/{userId}")
+    @HxRequest
+    @HxTrigger("updateUserList")
+    fun getUserById(@PathVariable userId: String): User {
+        println("get user by id $userId")
+        return userList.find { it.id == userId }!!
     }
 }
