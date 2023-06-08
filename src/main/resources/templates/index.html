@@ -17,8 +17,8 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
             <form
-                    class="form"
                     hx-post="/users"
+                    hx-swap="none"
             >
                 <label for="name">Name</label>
                 <input
@@ -29,7 +29,6 @@
                         placeholder="e.g John Doe"
                         hx-post="/users/validateName"
                         hx-trigger="change"
-                        hx-sync="closest form:abort"
                         hx-target="#name-error"
                 >
                 <span id="name-error" style="color: red"></span><br>
@@ -76,5 +75,10 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('add-user-form').addEventListener('submit', function (evt) {
+        evt.preventDefault();
+    })
+</script>
 </body>
 </html>
