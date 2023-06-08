@@ -26,6 +26,7 @@ dependencies {
 
 
 	implementation("org.webjars.npm:htmx.org:1.9.2")
+	implementation("org.webjars:bootstrap:5.3.0")
 
 
 }
