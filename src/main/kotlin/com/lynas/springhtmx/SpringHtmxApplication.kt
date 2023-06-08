@@ -79,10 +79,10 @@ data class User(
 )
 
 var userList = mutableListOf(
-    User(name = "John Doe"),
-    User(name = "Max Payne"),
-    User(name = "Uzumaki Naruto"),
-    User(name = "John Constantine"),
+    User(name = "John Doe", age = 34, location = "Dhaka"),
+    User(name = "Max Payne", age = 65, location = "New York"),
+    User(name = "Uzumaki Naruto", age = 17, location = "Munich"),
+    User(name = "John Constantine", age = 45, location = "London"),
 )
 
 @RestController
