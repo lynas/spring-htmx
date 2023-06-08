@@ -98,6 +98,7 @@ class UserController {
     @PostMapping("/validateName")
     @HxRequest
     fun validateUserName(@RequestParam name: String): String {
+        println(name)
         return if (name.length < 3) "Invalid input" else ""
     }
 
