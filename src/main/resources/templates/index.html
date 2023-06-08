@@ -32,10 +32,9 @@
                         hx-trigger="change"
                         hx-sync="closest form:abort"
                         hx-target="#name-error"
+                        hx-swap="innerHTML"
                 >
-                <span id="name-error">
-<!--                    todo fix me-->
-                </span><br>
+                <span id="name-error" style="border: 2px solid red"></span><br>
                 <label for="age">Age</label>
                 <input
                         id="age"
