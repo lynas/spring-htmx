@@ -56,29 +56,11 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Location</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.name}"></td>
-<!--                    <td th:text="${user.age}"></td>-->
-<!--                    <td th:text="${user.location}"></td>-->
-                </tr>
-                </tbody>
-            </table>
+            <div hx-get="/userList" hx-trigger="load">
+            </div>
         </div>
+
     </div>
 </div>
-<script>
-    document.getElementById('add-user-form').addEventListener('submit', function (evt) {
-        evt.preventDefault();
-    })
-</script>
 </body>
 </html>

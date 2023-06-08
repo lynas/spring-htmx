@@ -22,70 +22,73 @@ import org.springframework.web.bind.annotation.RestController
 class SpringHtmxApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringHtmxApplication>(*args)
+    runApplication<SpringHtmxApplication>(*args)
 }
 
 @Controller
 class IndexController {
 
-	@GetMapping("/")
-	fun index(model: Model): String {
-		model.addAttribute("users", userList)
-		return "index"
-	}
+    @GetMapping("/")
+    fun index(model: Model): String {
+        model.addAttribute("users", userList)
+        return "index"
+    }
 
-	@GetMapping("/users")
-	@HxRequest
-	fun htmxRequest(details: HtmxRequest, model: Model): String {
-		println(details)
-		model.addAttribute("users", userList)
-		return "users"
-	}
+    @GetMapping("/userList")
+    fun store(model: Model): String {
+        model.addAttribute("users", userList)
+        return "userList"
+    }
 }
 
 @RestController
-class ApiController{
-	@PostMapping("/clicked")
-	fun clicked() = "clicked data"
+class ApiController {
+    @PostMapping("/clicked")
+    fun clicked() = "clicked data"
 
-	@PostMapping("/store")
-	@HxRequest
-	fun store(details: HtmxRequest) : String {
-		return "stored data"
-	}
+    @GetMapping("/store")
+    @HxRequest
+    fun store(details: HtmxRequest): String {
+        return "stored data"
+    }
 
-	@PostMapping("/validate")
-	@HxRequest
-	fun validate(request: HtmxRequest, @RequestParam title: String) : String {
-		return if (title.length < 3) "Invalid input" else ""
-	}
+    @PostMapping("/validate")
+    @HxRequest
+    fun validate(request: HtmxRequest, @RequestParam title: String): String {
+        return if (title.length < 3) "Invalid input" else ""
+    }
 }
 
 data class User(
-	val name: String
+    val name: String
 )
 
 var userList = mutableListOf(
-	User("Name1"),
-	User("Name2")
+    User("Name1"),
+    User("Name2")
 )
 
 @RestController
 @RequestMapping("/users")
-class UserController{
-	@GetMapping
-	fun userList() = userList
+class UserController {
+    @GetMapping
+    fun userList(): MutableList<User> {
+        println(userList.size)
+        println("get user list")
+        return userList
+    }
 
-	@PostMapping("/validateName")
-	@HxRequest
-	fun validateUserName(@RequestParam name: String) : String {
-		return if (name.length < 3) "Invalid input" else ""
-	}
+    @PostMapping("/validateName")
+    @HxRequest
+    fun validateUserName(@RequestParam name: String): String {
+        return if (name.length < 3) "Invalid input" else ""
+    }
 
-	@PostMapping
-	@HxRequest
-	fun createNewUser(@ModelAttribute user: User) : String {
-		println(user)
-		return user.toString()
-	}
+    @PostMapping
+    @HxRequest
+    fun createNewUser(@ModelAttribute user: User): String {
+        userList.add(user)
+        println(userList.size)
+        return user.toString()
+    }
 }
