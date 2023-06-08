@@ -67,11 +67,10 @@
     <div>
         <button
                 style="visibility: hidden"
-                type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample"
-                id="openSidebar"
+                id="rightSidebar"
         >
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -84,9 +83,8 @@
     </div>
 </div>
 <script>
-    // TODO remove me
     document.body.addEventListener("openSidebar", function(evt){
-        document.getElementById('openSidebar').click();
+        document.getElementById('rightSidebar').click();
     })
 </script>
 </body>
