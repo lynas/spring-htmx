@@ -49,6 +49,7 @@
                         name="location"
                         placeholder="e.g. Munich"
                 >
+                <br>
                 <button class="btn btn-primary" type="submit">Submit</button>
 
             </form>
@@ -63,20 +64,31 @@
     </div>
     <div>
         <button class="btn btn-primary"
+                style="visibility: hidden"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasExample"
-                aria-controls="offcanvasExample">
+                aria-controls="offcanvasExample"
+                id="openSidebar"
+        >
             Open
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-body">
                 <div>
                     Some text as placeholder
+                    <div id="user-details">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    document.body.addEventListener("openSidebar", function(evt){
+        document.getElementById('openSidebar').click();
+    })
+</script>
 </body>
 </html>

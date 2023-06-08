@@ -42,6 +42,15 @@ class IndexController {
         model.addAttribute("users", userList)
         return "userList"
     }
+
+    @GetMapping("/users/byId/{userId}")
+    @HxTrigger("openSidebar")
+    fun getUserById(@PathVariable userId: String, model: Model): String {
+        println("get user by id $userId")
+        model.addAttribute("user",
+            userList.find { it.id == userId } ?: User(name = "Not Found"))
+        return "userDetails"
+    }
 }
 
 @RestController
@@ -104,11 +113,11 @@ class UserController {
         return user.toString()
     }
 
-    @GetMapping("/byId/{userId}")
-    @HxRequest
-    @HxTrigger("updateUserList")
-    fun getUserById(@PathVariable userId: String): User {
-        println("get user by id $userId")
-        return userList.find { it.id == userId }!!
-    }
+//    @GetMapping("/byId/{userId}")
+//    @HxRequest
+//    @HxTrigger("openSidebar")
+//    fun getUserById(@PathVariable userId: String): User {
+//        println("get user by id $userId")
+//        return userList.find { it.id == userId }!!
+//    }
 }

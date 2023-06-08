@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:hx="https://github.com/wimdeblauwe/htmx-spring-boot-thymeleaf"
-      th:with="headline='Welcome to Schematic - a database management UI for Spring Boot!'">
+      xmlns:hx="https://github.com/wimdeblauwe/htmx-spring-boot-thymeleaf">
 <head>
 </head>
 <body>
@@ -24,7 +22,7 @@
                 <td th:text="${user.id}"
                     hx-trigger="click"
                     hx:get="@{/users/byId/}+${user.id}"
-                    hx-swap="none"
+                    hx-target="#user-details"
                 ></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.age}"></td>
