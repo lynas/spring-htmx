@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:hx="https://github.com/wimdeblauwe/htmx-spring-boot-thymeleaf"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:hx="https://github.com/wimdeblauwe/htmx-spring-boot-thymeleaf"
 >
 <head>
     <meta charset="UTF-8">
@@ -17,50 +16,7 @@
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-            <span id="dots" class="htmx-indicator">
-                    <img src="/spinner.gif" alt="#" width="20" height="20">
-                </span>
-            <form
-                    hx-post="/users"
-                    hx-swap="none"
-
-            >
-                <label for="name">Name</label>
-                <input
-                        id="name"
-                        class="form-control"
-                        type="text"
-                        name="name"
-                        placeholder="e.g John Doe"
-                        hx-post="/users/validateName"
-                        hx-trigger="change"
-                        hx-sync="closest form:abort"
-                        hx-target="#name-error"
-                        hx-swap="innerHTML"
-                        hx-indicator="#dots"
-                >
-                <span id="name-error" style="color: red"></span><br>
-                <label for="age">Age</label>
-                <input
-                        id="age"
-                        class="form-control"
-                        type="number"
-                        name="age"
-                        placeholder="20"
-                >
-                <label for="location">Location</label>
-                <input
-                        id="location"
-                        class="form-control"
-                        type="text"
-                        name="location"
-                        placeholder="e.g. Munich"
-                >
-                <br>
-                <button class="btn btn-primary"
-                        type="submit">Submit</button>
-
-            </form>
+            <div hx-get="/createUserForm" hx-trigger="load"></div>
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -71,15 +27,15 @@
 
     </div>
     <div>
-        <button
-                style="visibility: hidden"
+        <button style="visibility: hidden"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample"
                 id="rightSidebar"
         >
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-body">
                 <div>
                     <div id="user-details"></div>
@@ -89,7 +45,7 @@
     </div>
 </div>
 <script>
-    document.body.addEventListener("openSidebar", function(evt){
+    document.body.addEventListener("openSidebar", function (evt) {
         document.getElementById('rightSidebar').click();
     })
 </script>

@@ -1,0 +1,38 @@
+<span id="dots" class="htmx-indicator"><img src="/spinner.gif" alt="#" width="20" height="20"></span>
+<form hx-post="/users"
+      hx-swap="none">
+    <label for="name">Name</label>
+    <input id="name"
+           class="form-control"
+           type="text"
+           name="name"
+           placeholder="e.g John Doe"
+           hx-post="/users/validateName"
+           hx-trigger="change"
+           hx-sync="closest form:abort"
+           hx-target="#name-error"
+           hx-swap="innerHTML"
+           hx-indicator="#dots"
+    >
+    <span id="name-error" style="color: red"></span><br>
+    <label for="age">Age</label>
+    <input
+            id="age"
+            class="form-control"
+            type="number"
+            name="age"
+            placeholder="20"
+    >
+    <label for="location">Location</label>
+    <input
+            id="location"
+            class="form-control"
+            type="text"
+            name="location"
+            placeholder="e.g. Munich"
+    >
+    <br>
+    <button class="btn btn-primary"
+            type="submit">Submit
+    </button>
+</form>

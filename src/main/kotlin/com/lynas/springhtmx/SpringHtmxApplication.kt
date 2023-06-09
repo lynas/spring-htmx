@@ -1,7 +1,6 @@
 package com.lynas.springhtmx
 
 import io.github.wimdeblauwe.hsbt.mvc.HtmxRequest
-import io.github.wimdeblauwe.hsbt.mvc.HxRefresh
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxTrigger
 import jakarta.servlet.http.HttpServletResponse
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestAttribute
-import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -50,6 +47,11 @@ class IndexController {
         model.addAttribute("user",
             userList.find { it.id == userId } ?: User(name = "Not Found"))
         return "userDetails"
+    }
+
+    @GetMapping("/createUserForm")
+    fun createUserForm(): String {
+        return "createUserForm"
     }
 }
 
