@@ -1,9 +1,7 @@
 package com.lynas.springhtmx.controller.user
 
-import io.github.wimdeblauwe.hsbt.mvc.HtmxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxTrigger
-import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -28,12 +26,8 @@ class UserRestController {
     @HxTrigger("updateUserList")
     fun createNewUser(
         @ModelAttribute user: User,
-        request: HtmxRequest,
-        response: HttpServletResponse
     ): String {
         userList.add(user)
-        println(userList.size)
-        response.setHeader("HX-Trigger", "updateUserList");
         return user.toString()
     }
 }

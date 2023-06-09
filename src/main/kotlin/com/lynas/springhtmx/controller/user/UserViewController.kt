@@ -19,7 +19,6 @@ class UserViewController {
     @GetMapping("/byId/{userId}")
     @HxTrigger("openSidebar")
     fun getUserById(@PathVariable userId: String, model: Model): String {
-        println("get user by id $userId")
         model.addAttribute("user",
             userList.find { it.id == userId } ?: User(name = "Not Found"))
         return "components/users/userDetails"
