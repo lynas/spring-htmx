@@ -13,7 +13,7 @@
             <tr th:each="user : ${users}">
                 <td th:text="${user.id}"
                     hx-trigger="click"
-                    hx:get="|/users/byId/${user.id}|"
+                    hx:get="|/views/users/byId/${user.id}|"
                     hx-target="#user-details"
                 ></td>
                 <td th:text="${user.name}"></td>

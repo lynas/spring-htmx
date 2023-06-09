@@ -1,5 +1,5 @@
-<span id="dots" class="htmx-indicator"><img src="/spinner.gif" alt="#" width="20" height="20"></span>
-<form hx-post="/users"
+<span id="dots" class="htmx-indicator"><img src="/spinner.gif" alt="#"></span>
+<form hx-post="/api/users"
       hx-swap="none">
     <label for="name">Name</label>
     <input id="name"
@@ -7,7 +7,7 @@
            type="text"
            name="name"
            placeholder="e.g John Doe"
-           hx-post="/users/validateName"
+           hx-post="/api/users/validateName"
            hx-trigger="change"
            hx-sync="closest form:abort"
            hx-target="#name-error"
