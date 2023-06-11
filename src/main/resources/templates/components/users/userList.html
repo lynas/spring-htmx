@@ -10,12 +10,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user : ${userList}">
-                <td th:text="${user.id}"
-                    hx-on="click: document.querySelector('#rightSidebar').click()"
-                    hx:get="|/views/users/byId/${user.id}|"
-                    hx-target="#user-details">
-                </td>
+            <tr th:each="user : ${userList}"
+                hx-on="click: document.querySelector('#rightSidebar').click()"
+                hx:get="|/views/users/byId/${user.id}|"
+                hx-target="#user-details">
+                <td th:text="${user.id}"></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.location}"></td>
