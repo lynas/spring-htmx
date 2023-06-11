@@ -15,14 +15,12 @@ class UserRestController {
     }
 
     @PostMapping("/validateName")
-    @HxRequest
     fun validateUserName(@RequestParam name: String): String {
         println(name)
         return if (name.length < 3) "Invalid input" else ""
     }
 
     @PostMapping
-    @HxRequest
     @HxTrigger("updateUserList")
     fun createNewUser(
         @ModelAttribute user: User,
