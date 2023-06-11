@@ -14,7 +14,7 @@ class UserViewController {
     @HxRequest
     @GetMapping("/userList")
     fun store(model: Model): String {
-        model.addAttribute("users", userList)
+        model.addAttribute("userList", userList)
         return "components/users/userList"
     }
 
