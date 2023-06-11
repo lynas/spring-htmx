@@ -1,6 +1,5 @@
 package com.lynas.springhtmx.controller.user
 
-import io.github.wimdeblauwe.hsbt.mvc.HxRequest
 import io.github.wimdeblauwe.hsbt.mvc.HxTrigger
 import org.springframework.web.bind.annotation.*
 
